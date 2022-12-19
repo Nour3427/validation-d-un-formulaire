@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="login-page">
+    <div class="form">
+      <form class="register-form">
+        <input class='nour' type="text" placeholder="name" />
+        <br><span id="name_message"></span>
+        <input id="password" type="password" placeholder="password" required="required" maxlength="20" />
+        <br><span id="password_message"></span>
+        <input id="email" type="text" placeholder="email address" required="required" />
+        <br><span id="email_message"></span>
+        <button id="button">create</button>
+        <p class="message">Already registered? <a href="#">Sign In</a></p>
+      </form>
+      <form class="login-form">
+        <input type="text" placeholder="username" />
+        <input type="password" placeholder="password" />
+        <button>login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+    </div>
+
+
+  <div id="bienvenue">
+    <p> Bienvenue l'artist </p>
+  </div>
+  </div>
+
+
+
+
+
+
+  <script>
+    var button = document.getElementById('button');
+    var name_message = document.getElementById('name_message');
+    var nour = document.querySelector('.nour');
+    var password = document.getElementById('password');
+    var password_message=document.getElementById('password_message');
+    var email=document.getElementById('email');
+    var email_message=document.getElementById('email_message');
+    var form=document.querySelector('.form');
+    var bienvenue=document.getElementById('bienvenue');
+
+
+
+    button.addEventListener('click', function (e) {
+     
+      var regexname=/^[A-Z][a-zéèçà]+$/;
+      var regexpassword=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+      var regexmail=/^\S+@\S+\.\S+$/;
+
+
+    
+
+      if (nour.value == '') {
+        e.preventDefault();
+        name_message.innerHTML = 'Enter your name please '
+        
+      }
+
+
+      else if (regexname.test(nour.value) == false) {
+        e.preventDefault();
+        name_message.innerHTML = 'Should start with a capital letter';
+        
+
+      }  else { name_message.innerHTML = ' ';
+         nour.style.border="2px solid #4caf50";}
+
+
+      if (password.value == '') {
+        e.preventDefault();
+        password_message.innerHTML = 'Enter your password please '
+      }
+    
+      else if( (regexpassword.test(password.value) == false) ){
+        e.preventDefault();
+        password_message.innerHTML = 'At least one upper case and one digit '
+
+
+      }else{
+         password_message.innerHTML = ' ';
+         password.style.border="2px solid #4caf50";
+
+
+
+      }
+      if (email.value == '') {
+        e.preventDefault();
+        email_message.innerHTML = 'Enter your Email please '
+      }
+      else if( regexmail.test(email.value) == false ){
+        e.preventDefault();
+        email_message.innerHTML = 'You have entered an invalid email address! '
+    
+    
+    }
+
+    else {
+      e.preventDefault()
+
+      form.style.display='none';
+      bienvenue.style.display='flex';
+
+    }
+    });
+
+
+
+  </script>
+</body>
+
+</html>
